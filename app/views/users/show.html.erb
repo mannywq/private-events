@@ -1,0 +1,18 @@
+<h1>Events for <%= @user.email %></h1>
+
+<% if @user.attendances.any? %>
+  <section class="grid md:grid-cols-3 gap-8">
+  <% @user.attendances.each do |rsvp| %>
+
+<div class="p-4 bg-white shadow-md grid grid-cols items-center">
+    <h3 class="mt-0"><%= rsvp.event.name %></h2>
+    <p><%= rsvp.event.location %></p>
+    <p class="mt-0 lg:order-first"><%= rsvp.event.event_date.strftime('%Y-%m-%d %H:%M') %></p>
+    </div>
+
+  <% end %>
+    </section>
+    <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: 'delete' } %>
+<% else %>
+  <h3>No events found</h3>
+<% end %>

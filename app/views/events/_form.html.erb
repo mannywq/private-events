@@ -1,0 +1,13 @@
+<%= form_with model: @event, html: { class: 'mx-auto grid grid-cols-1 p-4 gap-2 w-full sm:w-1/2'} do |f| %>
+
+  <%= f.label :name, class: "text-sm font-bold" %>
+  <%= f.text_field :name, placeholder: "Event title" %>
+  <%= f.label :location, class: "mt-2 text-sm font-bold" %>
+  <%= f.text_field :location %>
+  <%= f.label :event_date, "Date and time", class: "mt-2 text-sm font-bold" %>
+  <%= f.datetime_field :event_date, value: "2024-01-01T19:00" %>
+  <%= f.submit "Create event",
+           class:
+             "mt-2 bg-blue-500 hover:bg-blue-600 cursor-pointer rounded-md p-2 text-white font-bold" %>
+
+<% end %>

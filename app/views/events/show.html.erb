@@ -1,0 +1,20 @@
+<h1><%= @event.name %></h1>
+<p><%= @event.location %></p>
+<p><%= @event.event_date %></p>
+
+<% if current_user.attendances.exists?(event_id: @event.id) %>
+  <p>You are attending this event</p>
+<% else %>
+  <%= button_to "Attend event",
+  attendances_path,
+  params: {
+    attendance: {
+      event_id: @event.id
+    }
+  },
+  method: :post %>
+<% end %>
+<h3>Registered attendees:</h3>
+<% @event.attendances.each do |ev| %>
+  <strong><%= ev.attendee.email %></strong>
+<% end %>
